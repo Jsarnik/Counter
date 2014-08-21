@@ -1,0 +1,580 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta name="keywords" content="Justin, Sarnik, Web, Development, c#, mobile, web, forms" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Counter</title>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="/calendar/js/calendar.js" type="text/javascript"></script>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<link href="/calendar/styles/calendar.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+
+#calendar{
+top: 175px;
+left: 200px;
+}
+
+#counter_container{
+background-color: transparent;
+padding: 15px 5px 15px 5px;
+height: 122px;
+width: 598px;
+position: relative;
+z-index: 1001;
+margin-bottom: 25px
+}
+
+.num_container{
+	width:77px;
+	height:150px;
+	background-color:transparent;
+	display:inline-block;
+	overflow:hidden;
+	margin-right:2px;	
+}
+
+.comma{
+     margin-bottom:17px;
+}
+
+.divider_line{
+    height:4px;
+    width:603px;
+    top:75px;
+    position:absolute;
+    z-index: 1001;
+    background-color:#000;
+}
+
+.number{
+	position:absolute;
+	width:77px;
+	height:66px;
+	background-color:transparent;
+	color:#fff;
+	text-align:center;
+}
+
+.number .item{
+	width:77px;
+	height:61px;
+	background-image: url(imgs/numbers.png);   
+	
+    /*-webkit-animation: flip .1s infinite;
+    -webkit-animation-timing-function: linear;
+    animation: flip .1s infinite;
+    animation-timing-function: linear;*/
+}
+
+.flip{
+  
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform .5s;
+    -webkit-transform: rotateX(  -180deg );
+    -webkit-transform-origin: 0% 100%;
+
+    -moz-transform-style: preserve-3d;
+    -moz-transition: -moz-transform .5s;
+    -moz-transform: rotateX(  -180deg );
+    -moz-transform-origin: 0% 100%;
+
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    transform: rotateX(  -180deg );
+    transform-origin: 0% 100%;
+
+    -o-transform-style: preserve-3d;
+    -o-transition: -o-transform .5s;
+    -o-transform: rotateX(  -180deg );
+    -o-transform-origin: 0% 100%;
+
+}
+
+.btm{
+	top:90px;
+}
+.number 
+{
+	     -webkit-perspective:2000;
+}
+
+/************************ NUMBERS AND COLORS **************************/
+
+/* zero */
+
+.red_top_0 {background-position: 77px 0px;}
+.red_btm_0 {background-position: 77px -63px;}
+
+.blue_top_0 {background-position: 77px -169px;}
+.blue_btm_0 {background-position: 77px -232px;}
+
+.green_top_0 {background-position: 77px -338px;}
+.green_btm_0 {background-position: 77px -400px;}
+
+.pink_top_0 {background-position: 77px -506px;}
+.pink_btm_0 {background-position: 77px -568px;}
+
+
+/* one */
+
+.red_top_1 {background-position: 0px 0px;}
+.red_btm_1 {background-position: 0px -63px;}
+
+.blue_top_1 {background-position: 0px -169px;}
+.blue_btm_1 {background-position: 0px -232px;}
+
+.green_top_1 {background-position: 0px -338px;}
+.green_btm_1 {background-position: 0px -400px;}
+
+.pink_top_1 {background-position: 0px -506px;}
+.pink_btm_1 {background-position: 0px -568px;}
+
+/* two */
+
+.red_top_2 {background-position: -81px 0px;}
+.red_btm_2 {background-position: -81px -63px;}
+
+.blue_top_2 {background-position: -81px -169px;}
+.blue_btm_2 {background-position: -81px -232px;}
+
+.green_top_2 {background-position: -81px -338px;}
+.green_btm_2 {background-position: -81px -400px;}
+
+.pink_top_2 {background-position: -81px -506px;}
+.pink_btm_2 {background-position: -81px -568px;}
+
+/* three */
+
+.red_top_3 {background-position: -162px 0px;}
+.red_btm_3 {background-position: -162px -63px;}
+
+.blue_top_3 {background-position: -162px -169px;}
+.blue_btm_3 {background-position: -162px -232px;}
+
+.green_top_3 {background-position: -162px -338px;}
+.green_btm_3 {background-position: -162px -400px;}
+
+.pink_top_3 {background-position: -162px -506px;}
+.pink_btm_3 {background-position: -162px -568px;}
+
+/* four */
+
+.red_top_4 {background-position: -243px 0px;}
+.red_btm_4 {background-position: -243px -63px;}
+
+.blue_top_4 {background-position: -243px -169px;}
+.blue_btm_4 {background-position: -243px -232px;}
+
+.green_top_4 {background-position: -243px -338px;}
+.green_btm_4 {background-position: -243px -400px;}
+
+
+.pink_top_4 {background-position: -243px -506px;}
+.pink_btm_4 {background-position: -243px -568px;}
+
+/* five */
+
+.red_top_5 {background-position: -325px 0px;}
+.red_btm_5 {background-position: -325px -63px;}
+
+.blue_top_5 {background-position: -325px -169px;}
+.blue_btm_5 {background-position: -325px -232px;}
+
+.green_top_5 {background-position: -325px -338px;}
+.green_btm_5 {background-position: -325px -400px;}
+
+.pink_top_5 {background-position: -325px -506px;}
+.pink_btm_5 {background-position: -325px -568px;}
+
+/* six */
+
+.red_top_6 {background-position: -405px  0px;}
+.red_btm_6 {background-position: -405px  -63px;}
+
+.blue_top_6 {background-position: -405px -169px;}
+.blue_btm_6 {background-position: -405px -232px;}
+
+.green_top_6 {background-position: -405px -338px;}
+.green_btm_6 {background-position: -405px -400px;}
+
+.pink_top_6 {background-position: -405px -506px;}
+.pink_btm_6 {background-position: -405px -568px;}
+
+/* seven */
+
+.red_top_7 {background-position: -486px  0px;}
+.red_btm_7 {background-position: -486px  -63px;}
+
+.blue_top_7 {background-position: -486px -169px;}
+.blue_btm_7 {background-position: -486px -232px;}
+
+.green_top_7 {background-position: -486px -338px;}
+.green_btm_7 {background-position: -486px -400px;}
+
+.pink_top_7 {background-position: -486px -506px;}
+.pink_btm_7 {background-position: -486px -568px;}
+
+/* eight */
+
+.red_top_8 {background-position: -567px 0px;}
+.red_btm_8 {background-position: -567px -63px;}
+
+.blue_top_8 {background-position: -567px -169px;}
+.blue_btm_8 {background-position: -567px -232px;}
+
+.green_top_8 {background-position: -567px -338px;}
+.green_btm_8 {background-position: -567px -400px;}
+
+.pink_top_8 {background-position: -567px -506px;}
+.pink_btm_8 {background-position: -567px -568px;}
+
+/* nine */
+
+.red_top_9 {background-position: -648px 0px;}
+.red_btm_9 {background-position: -648px -63px;}
+
+.blue_top_9 {background-position: -648px -169px;}
+.blue_btm_9 {background-position: -648px -232px;}
+
+.green_top_9 {background-position: -648px -338px;}
+.green_btm_9 {background-position: -648px -400px;}
+
+.pink_top_9 {background-position: -648px -506px;}
+.pink_btm_9 {background-position: -648px -568px;}
+
+
+.ColumnContainer { position: relative; }
+
+#start{
+	width:100px;
+	height:25px;
+	line-height:25px;
+	text-align:center;
+	background-color: #fff;
+	border:solid 1px #000;	
+	cursor:pointer;
+}
+
+#start:hover{
+box-shadow: 1px 1px 3px #000;
+}
+
+.red{
+color: red;
+}
+
+</style>
+
+</head>
+<body>
+
+
+<script type="text/javascript">
+var colorOrder = [ 'red' , 'blue' , 'green' , 'pink' , 'red' , 'blue' , 'green' ],
+flipsPer,
+count = 0,
+finalVal = 0,
+currentDate= new Date(),
+startDate = new Date(),
+endDate = new Date(),
+placeArray = ['seven','six','five','four','three','two','one',],
+flipDelay = 9, //seconds
+animationLength =   2, //seconds
+totalInterval = 0,
+colorsArray = ['red', 'blue', 'green', 'pink'],
+secsFromStart = 0;
+var flipTimeout,
+animateTimeout,
+animate2Timeout,
+intervalTime,
+clockTimeout,
+prevVal;
+
+
+$(document).ready(function(){
+setStuffUp();
+	$('#start').on('click',function(){		
+		clearTimeout(flipTimeout);
+		clearTimeout(animateTimeout);
+		clearTimeout(animate2Timeout);
+		clearTimeout(clockTimeout);
+		clearInterval(intervalTime);
+		startDate = new Date($('#startDate').html());
+		endDate = new Date($('#endDate').html());
+		finalVal = parseInt($('#finalValue').val());		
+		totalInterval = Math.ceil(finalVal / ((endDate.getTime() - startDate.getTime())/1000));
+		$('#showInterval').html('~ ' + totalInterval + '/s');
+		initCounter(currentDate);
+	});
+});
+
+function setStuffUp(){
+
+	startDate.setDate(startDate.getDate() -1);
+	endDate.setDate(startDate.getDate() +5);
+	
+	$('#startDate').html(dateFormat(startDate));
+	$('#endDate').html(dateFormat(endDate));
+	finalVal = parseInt($('#finalValue').val());
+	totalInterval = Math.ceil(finalVal / ((endDate.getTime() - startDate.getTime())/1000));
+	$('#showInterval').html('~ ' + totalInterval + '/s');
+	//$('#showNextValue').html(parseInt(nextValue));
+	initCounter(currentDate);
+}
+
+function initCounter(dt) {
+    currentDate = dt;
+    
+    secsFromStart = ((currentDate.getTime() - startDate.getTime()) / 1000);
+
+	time(secsFromStart*1000);
+
+
+    intervalTime = setInterval(function() {
+        secsFromStart += 3;
+    } , 3000);
+	
+	initFlip();
+}
+
+jQuery.fn.outerHTML = function() {
+  return jQuery('<div />').append(this.eq(0).clone()).html();
+};
+
+function shuffle(array) {
+	  var currentIndex = array.length
+		, temporaryValue
+		, randomIndex
+		;
+	  // While there remain elements to shuffle...
+	  while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	  }	  
+		return array;
+	}
+
+function initFlip(){
+        var curTime = new Date(startDate.getTime() + 1000*secsFromStart);
+	    var dif = endDate.getTime() - startDate.getTime();
+	    dif = dif / 1000; // seconds between start time and end time
+
+	    var dif2 = curTime.getTime() - startDate.getTime();
+	    var dif2 = dif2 / 1000;
+
+	    var percent_complete = dif2 / dif;
+		
+    	var newStartNum = Math.ceil(finalVal * percent_complete);
+
+
+		var nextValue = newStartNum;
+
+		var pos = 0;
+
+		if (nextValue >= finalVal)
+            nextValue = finalVal;
+			
+		while (nextValue.toString().length < 7) nextValue = "0" + nextValue;
+		// ex: 0000070
+		nextValue = String(nextValue);
+
+		
+		$('.num_container').each(function(){
+			var tempArray = [];		
+			var oneToTen = nextValue.substr(pos , 1); //Math.floor((Math.random() * 10) + 1);			
+			var colorCount = colorsArray.length;
+			
+			var color = colorOrder[pos];
+			for (var i = 0; i < oneToTen; i++)	{	
+			
+
+				var randomColor = color; //Math.floor((Math.random() * colorCount) + 0);
+				var randomPick = Math.floor((Math.random() * 9) + 0);
+				
+				tempArray.push('<div class="number" data-num=\'0\'><div class="item top ' + randomColor + '_top_' + randomPick + '"></div><div class="item btm ' + randomColor + '_btm_' + randomPick + '"></div></div>');			
+			}			
+				
+			var nextIndex = parseInt(nextValue.toString().substr(pos,1));						
+			var finalColor = color; //colorsArray[Math.floor((Math.random() * colorCount) + 0)];
+			
+			var nextElement = '<div class="number" data-num=\'0\'><div class="item top ' + finalColor + '_top_' + nextIndex + '"></div><div class="item btm ' + finalColor + '_btm_' + nextIndex + '"></div></div>';
+
+			tempArray.splice(tempArray.indexOf(nextElement), 1);											
+			tempArray.splice(0, 0, nextElement);
+			
+			var prependedHTML = '';
+			for (var i = 0; i < tempArray.length; i++)
+			{			
+				prependedHTML = prependedHTML + tempArray[i];
+			}
+			$(this).prepend(prependedHTML);
+			pos = pos + 1;
+		});		
+		
+		shuffle(placeArray);
+		
+		runAnimation(0);
+
+		flipTimeout = setTimeout(function(){
+		    if (nextValue >= finalVal)
+		        return;		    		            
+
+		    initFlip();
+		},flipDelay * 1000);			
+		
+
+}
+
+function runAnimation(index){
+
+		var curentElement = $('#' + placeArray[index] +' .number:last-child .top');
+		animate(curentElement);
+
+		animateTimeout = setTimeout(function(){
+			if (index < 7)
+				runAnimation(index+=1);
+		}, 100);
+		
+}
+
+function animate(e){
+		e.addClass('flip');
+		var parent = e.parent().parent().attr('id');
+		var elementCount = e.parent().parent().find('.number').length;
+
+				
+		animate2Timeout = setTimeout(function(){
+		    if(elementCount > 2)
+				animate($('#' + parent + ' .number:last-child .top'));
+		    e.parent().empty().remove();
+
+		},(animationLength/flipDelay)*1000);		
+}
+
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt /*, from*/)
+  {
+    var len = this.length >>> 0;
+
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
+
+function time(ms){
+
+var ss = Math.floor(ms/1000);
+var mm = Math.floor(ss/60);
+var hh = Math.floor(mm/60);
+var dd  = Math.floor(hh/24);
+var timePassed = '';
+
+timePassed = String(dd) + ' days : ' + String(hh-(dd*24)) + ' hours : ' + String(mm-(hh*60)) + ' minutes  : ' + String(Math.floor(ss-(mm*60))) + ' seconds';// : ' + String(ms-(ss*1000));
+
+$('#showTimePassed').html(timePassed);
+
+clockTimeout = setTimeout(function(){
+	time(ms+=100);
+},100);
+}
+
+		
+</script>
+
+		<div id="counter_container">		
+			<div class="num_container"  id="one" data-rotation="0">				
+				<div class="number" data-num='0'>
+					<div class="item top red_top_0"></div>
+					<div class="item btm red_btm_0"></div>
+				</div>	
+
+			</div>
+			<div class="num_container" id="two"  data-rotation="0">
+			
+				<div class="number" data-num='0'>
+					<div class="item top green_top_0"></div>
+					<div class="item btm green_btm_0"></div>
+				</div>	
+
+			</div>
+			<div class="num_container" id="three"  data-rotation="0">
+
+				<div class="number" data-num='0'>
+					<div class="item top pink_top_0"></div>
+					<div class="item btm pink_btm_0"></div>
+				</div>	
+
+			</div>
+			<div class="num_container" id="four"  data-rotation="0">
+
+				<div class="number" data-num='0'>
+					<div class="item top blue_top_0"></div>
+					<div class="item btm blue_btm_0"></div>
+				</div>	
+
+			</div>
+			<div class="num_container" id="five"  data-rotation="0">
+				
+				<div class="number" data-num='0'>
+					<div class="item top green_top_0"></div>
+					<div class="item btm green_btm_0"></div>
+				</div>	
+			</div>
+			<div class="num_container" id="six"  data-rotation="0">
+						
+				<div class="number" data-num='0' >
+					<div class="item top blue_top_0"></div>
+					<div class="item btm blue_btm_0"></div>
+				</div>	
+			</div>
+			<div class="num_container" id="seven"  data-rotation="0">				
+				
+				<div class="number" data-num='0'>
+					<div class="item top red_top_0"></div>
+					<div class="item btm red_btm_0"></div>
+				</div>	
+			</div>
+		</div>
+
+                <div id="calendar">
+                    <div id="calendarBody"></div>                    
+                    <div id="previousMonth" onclick="navCalendar(true);"><</div>
+                    <div id="nextMonth" onclick="navCalendar(false);">></div>
+                </div>  
+				
+			<form>			
+				<div>
+					<span>Start Date : </span><div class="filterDate filterButtons" id="startDate" data-option="1"></div>		<br/>
+					<span>Elapsed Time : </span><span class="red" id="showTimePassed"></span><br/>
+					<span>Interval : </span><span class="red" id="showInterval"></span><br/>
+					<span>End Date : </span><div class="filterDate filterButtons" id="endDate" data-option="2"></div>		<br/>
+					<span>Final Value : </span><input name="totalValue" id="finalValue" type="text" value="3000000"></input>
+				</div>
+			</form>
+				
+				<div id="start">Reset Counter</div>
+ 
+</body>
+</html>
