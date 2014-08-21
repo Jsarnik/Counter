@@ -5,10 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Counter</title>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script src="/calendar/js/calendar.js" type="text/javascript"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
-<link href="/calendar/styles/calendar.css" rel="stylesheet" type="text/css" />
-
 <style type="text/css">
 
 #calendar{
@@ -301,11 +298,11 @@ setStuffUp();
 		clearTimeout(animate2Timeout);
 		clearTimeout(clockTimeout);
 		clearInterval(intervalTime);
-		startDate = new Date($('#startDate').html());
-		endDate = new Date($('#endDate').html());
-		finalVal = parseInt($('#finalValue').val());		
+		startDate = new Date();
+		endDate = new Date();
+		finalVal = parseInt(3000000);		
 		totalInterval = Math.ceil(finalVal / ((endDate.getTime() - startDate.getTime())/1000));
-		$('#showInterval').html('~ ' + totalInterval + '/s');
+		
 		initCounter(currentDate);
 	});
 });
@@ -314,13 +311,10 @@ function setStuffUp(){
 
 	startDate.setDate(startDate.getDate() -1);
 	endDate.setDate(startDate.getDate() +5);
-	
-	$('#startDate').html(dateFormat(startDate));
-	$('#endDate').html(dateFormat(endDate));
-	finalVal = parseInt($('#finalValue').val());
+
+	finalVal = parseInt(3000000);
 	totalInterval = Math.ceil(finalVal / ((endDate.getTime() - startDate.getTime())/1000));
-	$('#showInterval').html('~ ' + totalInterval + '/s');
-	//$('#showNextValue').html(parseInt(nextValue));
+
 	initCounter(currentDate);
 }
 
@@ -557,24 +551,6 @@ clockTimeout = setTimeout(function(){
 				</div>	
 			</div>
 		</div>
-
-                <div id="calendar">
-                    <div id="calendarBody"></div>                    
-                    <div id="previousMonth" onclick="navCalendar(true);"><</div>
-                    <div id="nextMonth" onclick="navCalendar(false);">></div>
-                </div>  
-				
-			<form>			
-				<div>
-					<span>Start Date : </span><div class="filterDate filterButtons" id="startDate" data-option="1"></div>		<br/>
-					<span>Elapsed Time : </span><span class="red" id="showTimePassed"></span><br/>
-					<span>Interval : </span><span class="red" id="showInterval"></span><br/>
-					<span>End Date : </span><div class="filterDate filterButtons" id="endDate" data-option="2"></div>		<br/>
-					<span>Final Value : </span><input name="totalValue" id="finalValue" type="text" value="3000000"></input>
-				</div>
-			</form>
-				
-				<div id="start">Reset Counter</div>
  
 </body>
 </html>
